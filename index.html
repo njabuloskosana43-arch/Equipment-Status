@@ -16,6 +16,12 @@
 <p><strong>Next Inspection:</strong> <span id="next">-</span></p>
 
 <p><strong>Condition:</strong> <span id="condition">-</span></p>
+<script>
+const params = new URLSearchParams(window.location.search);
+const equipmentId = params.get("id");
 
+document.getElementById("equipment").textContent =
+    equipmentId ? equipmentId : "No Equipment Selected";
+</script>
 </body>
 </html>
