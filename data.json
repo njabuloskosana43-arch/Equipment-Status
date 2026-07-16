@@ -1,0 +1,12 @@
+{
+  "PH-EL-01": {
+    "lastInspection": "2026-07-15",
+    "nextInspection": "2027-01-15",
+    "condition": "Good"
+  },
+  "PH-EL-02": {
+    "lastInspection": "2026-07-12",
+    "nextInspection": "2027-01-12",
+    "condition": "Fair"
+  }
+}
