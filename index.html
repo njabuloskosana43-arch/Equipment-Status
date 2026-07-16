@@ -16,12 +16,34 @@
 <p><strong>Next Inspection:</strong> <span id="next">-</span></p>
 
 <p><strong>Condition:</strong> <span id="condition">-</span></p>
-<script>
+
+    <script>
 const params = new URLSearchParams(window.location.search);
 const equipmentId = params.get("id");
 
-document.getElementById("equipment").textContent =
-    equipmentId ? equipmentId : "No Equipment Selected";
+async function loadData() {
+    if (!equipmentId) {
+        document.getElementById("equipment").textContent = "No Equipment Selected";
+        return;
+    }
+
+    document.getElementById("equipment").textContent = equipmentId;
+
+    const response = await fetch("data.json");
+    const data = await response.json();
+
+    if (data[equipmentId]) {
+        document.getElementById("last").textContent = data[equipmentId].lastInspection;
+        document.getElementById("next").textContent = data[equipmentId].nextInspection;
+        document.getElementById("condition").textContent = data[equipmentId].condition;
+    } else {
+        document.getElementById("last").textContent = "Not Found";
+        document.getElementById("next").textContent = "-";
+        document.getElementById("condition").textContent = "-";
+    }
+}
+
+loadData();
 </script>
 </body>
 </html>
